@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Nunito Sans', sans-serif;
+}
+:root {
+  --IconSwitchColor: rgb(238, 215, 10);
+
+  --BoxShadow:0 4px 10px  rgba(0,0,0, 0.3);
+  --SelectOptionBg : rgb(1, 149, 207)
+
+}
+.dark {
+  background-color: rgba(7,49,85,0.527);
+  color: #fff;
+  box-shadow: 0 5px 5px -5px #333;
+
+
+}
+.light {
+  background-color: #fff;
+  color: #111;
+ box-shadow: 0 5px 5px -5px #333;
+
+}
+ul,ol,li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
