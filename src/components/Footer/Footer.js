@@ -1,38 +1,36 @@
 
 import React, { useContext } from 'react'
-
 import styled from 'styled-components'
-import SwitchMode from './SwitchMode'
 import {ThemeContext} from '../ThemeContext/ThemeContext'
-import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function Footer() {
   const themeContext = useContext(ThemeContext)
 
   return (
-    <HeaderPane className={themeContext.theme}>
-        <Link to={`/`}>
-          <span>Where in the world?</span>
-        </Link>
-        <SwitchMode />
-    </HeaderPane>
+    <FooterPane className={themeContext.theme}>
+        <h3>Design by ZTBee</h3>
+    </FooterPane>
   )
 }
 
-const HeaderPane = styled.div`
+const FooterPane = styled.div`
  height: 8vh;
  display: flex;
  align-items: center;
-
+ position:fixed;
+ right:0;
+ left:0;
+ bottom:0;
  justify-content: space-between;
  padding: 0 40px;
- box-shadow: 0 5px 5px -5px #333;
- z-index: 999;
+ box-shadow: 5px 5px 0px -5px #333;
 
- span {
+ h3 {
      font-size : 24px;
      font-weight: bold;
+     height:8vh;
      cursor:pointer;
+
 
  }
 `

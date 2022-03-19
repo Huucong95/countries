@@ -3,19 +3,32 @@ import {useDispatch, useSelector} from 'react-redux'
 import Scrollbar from 'react-perfect-scrollbar'
 import styled from 'styled-components'
 import Country from './Country'
-import {getCountries} from '../../Store/Action/countriesActions'
+import {getCountries, getCountriesByName, getCountryRegion} from '../../Store/Action/countriesActions'
+import { useParams } from 'react-router-dom'
+import Loading from '../../Loading/Loading'
 
 
 function Countries() {
     const dispatch = useDispatch()
     const countries = useSelector(state => state.Countries.countries)
+    const slug =useParams()
+    const loading = useSelector(state => state.Countries.loading)
     
     useEffect(() => {
-        dispatch(getCountries())
-    },[])
+        if(slug.regionName){
+            dispatch(getCountryRegion(slug.regionName))
+        }else if(slug.name){
+            dispatch(getCountriesByName(slug.name))
+        }
+        else {
+            dispatch(getCountries())
+
+        }
+    },[dispatch,slug.regionName,slug.name])
     
   return (
-    <Scrollbar style={{maxHeight:'80vh', overflow:'hidden',  marginTop: '20px'}}>
+      <>{
+          loading ? (<Loading/> ): (<Scrollbar style={{maxHeight:'80vh', overflow:'hidden',  marginTop: '20px'}}>
           <CountriesContainer>
             {
                 countries.map((country, index) =>(
@@ -25,7 +38,11 @@ function Countries() {
                 ) )
             }
         </CountriesContainer>
-      </Scrollbar>
+      </Scrollbar>)
+      }
+      
+    
+      </>
 
   )
 }

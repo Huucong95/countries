@@ -1,4 +1,5 @@
 import React , {useContext} from 'react'
+import {Link} from 'react-router-dom'
 import {ThemeContext} from '../../ThemeContext/ThemeContext'
 import styled from 'styled-components'
 
@@ -8,6 +9,7 @@ export default function Country(props) {
     const {country} = props
 
   return (
+<Link to={`/country/${country.name}`}>
     <CountryCard className={themeContext.theme}>
             <div className='flag'>
                 <img src={country.flag} alt="" />
@@ -26,8 +28,8 @@ export default function Country(props) {
                 <span>{country.capital}</span>
             </div>
             </CountryInfo>
-        </CountryCard>
-        
+ </CountryCard>
+</Link>
   )
 }
 const CountryCard = styled.div`

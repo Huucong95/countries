@@ -9,6 +9,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import CountryDetail from './components/MainContent/CountryDetail';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const themeContext = useContext(ThemeContext)
@@ -22,9 +24,12 @@ function App() {
           <Routes>
             <Route exact path='/' element={<MainContent/>} />     
             <Route path='/region/:regionName' element={<MainContent/>} />     
+            <Route path='/country/:countryName' element={<CountryDetail/>} />     
+            <Route path='/search/:name' element={<MainContent/>} />     
 
           </Routes>
         </ConstantContent>
+        <Footer />
       </Router>
     </AppContainer>
   );
